@@ -4,6 +4,33 @@
    클래스 설계 시 클래스간 간섭/정보 공유의 최소화
    객체의 정보 볼 수 있는 레벨
 
+    속성을 설정할 때 특별한 동작이 일어나야 하면 @property 데코레이터와
+     이에 대응하는 setter 속성을 사용하는 방법
+    
+class Mywallet(object):
+    def __init__(self, money):
+        self.money = money
+
+    @property #같은 money이지만 @에 의해 다른 역할
+    def money(self):
+        return self._money
+
+    @money.setter #얘를 명시하지 않으면 read-only
+    #외부에서 값을 변경할 수 없음
+    def money(self, money):
+        self._money = money
+
+s = Mywallet('5000')
+print(s.money)
+s.money ='10000'
+print(s.money)
+
+결과 5000
+       10000
+# 기존에 money 함수에 인자를 넣으면 새터로,
+# 그냥 호출하면 게터로
+
+
 2. 상속 (부모 재산 내꺼)
 #예시
 class Manager
@@ -67,3 +94,77 @@ poly(다양한)+morphism(변형 , 변신)
 모듈에서 특정 함수 또는 클래스만 improt 하는 법 권장
 from fah_converter import convert_c_to_f
        다른.py                    클래스
+
+
+sys.path //파일 경로
+import os //파이썬 터미널에서 cmd 가능
+os.getcwd() //'C:\\Users\\yujin\\Python\\Mycode'
+path = 'c:\\windows\\system32\\calc.exe'
+os.path.basename(path) //'calc.exe'
+
+https://docs.python.org/3/py-modindex.html
+#모듈 정보들....
+
+
+% 구글에 anaconda python - 오픈소스 - 여러 머신러닝 nlp 등
+다 있엉
+% 아나콘다 모든 오픈소스 다 있음 
+이미 라이브러리 install 다 되어 있음 
+담주에는 아나콘다 사용해보기
+
+
+#패키지
+모듈: 함수와 클래스를 정리해서 파일 분리시는 법
+패키지 : 다양한 모듈들의 합, 폴더로 연결됨
+__init__있어야 패키지로 인정됨(파이썬 3.x 버전 이후로)
+
+<예외 처리와 로깅>
+예외 처리 : 에러가 나도 실행 되도록 하기 위함
+
+- try~except
+try:
+    #예외 발생 코드
+except <Exception Type>
+    #예외 발생시 대응 코드
+*
+try:
+# 예외 발생 코드
+except < Exception Type >
+# 예외 발생시 대응 코드
+else:
+    #예외 발생하지 않을 떄 동작 코드
+*
+try:
+    # 예외 발생 코드
+except < Exception Type >
+    # 예외 발생시 대응 코드
+finally:
+# 예외 발생여부 상관없이 실행
+*
+raise<Exception Type>(예외정보)
+
+- exception 도 계층 있음
+
+- 사용자 정의 예외 만들기도 있음
+ : 클래스 객체 타입으로 정의
+ class BizException(Exception)
+     pass
+
+<로깅>
+로그 남기는 이유 : 개발 할 때 개발 로그,
+운영 할 때 운영 로그
+로그를 레벨 별로 기록을 남겨야 할 필요
+레벨 : 
+fatal
+error
+warn
+info
+debug
+
+ex) 
+log level : info
+
+print(add())
+logger.debug('aaa') //못 가져와
+logger.error('aa') //됨
+로그 레벨을 어떻게 설정하느냐
