@@ -1,0 +1,69 @@
+<객체와 클래스>
+
+1. 캡슐화
+   클래스 설계 시 클래스간 간섭/정보 공유의 최소화
+   객체의 정보 볼 수 있는 레벨
+
+2. 상속 (부모 재산 내꺼)
+#예시
+class Manager
+    name
+    salary
+    dept
+    
+class Mere
+    name
+    salary
+
+: 클래스 각각 만들지 말고
+공통적인 클래스 만들어 놓고
+의미상으로 Manager is a Employee
+Mere is a Employee
+
+#요런식으로 상속 구현
+class Employee
+    name 
+    salary
+    
+class Manager(Employee)
+    dept    
+
+
+3. Polymorphism (다형성)
+
+#(자바로 의미 살펴보기)
+Abstract class (추상클래스) : 자식 클래스가 구현해야 하는 
+강제적인 것
+ void my_method(); // 부모 클래스에서 선언만
+ 그 이유는 자식클래스 너가 구현해 그런 의미
+ 대신 반드시 구현해주어야 
+예시
+class abstract Animal{
+    abstract void m_method() //선언만
+}
+class Dog extends Animal{
+ abstract void m_method(){} //구현
+ void pet(){}
+}
+Animal ani = new Aninal(x)
+Aninal dog = new Dog(o)
+Animal anis = new Aninal[3]; //배열 선언 가능
+ani[1] = new Dog(); //ani가 animal타입이므로 가능
+
+for(Animal ani : anis ){
+    ani.my_method();
+}
+
+
+#(파이썬에서)
+raise() 어떤 예외를 강제로 발생시키는 것
+파이썬은 추상클래스 생성은 되지만 예외를 발생해 주어야 
+
+poly(다양한)+morphism(변형 , 변신)
+: one interface, multi implemetation
+
+
+<모듈과 패키지>
+모듈에서 특정 함수 또는 클래스만 improt 하는 법 권장
+from fah_converter import convert_c_to_f
+       다른.py                    클래스
