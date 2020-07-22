@@ -1,0 +1,114 @@
+1.파이선 개발 툴 키트
+2. 에디터 설치
+3. ide(integrated )
+jetbrains.co
+
+터미널-> 여러개 띄울수 있음
+파이참 터미널 -> 타입 보여줌
+
+다음엔 주피터노트북 으로 파이썬 해보기
+pdf 4 6 8 10 11 12 16 중요 
+
+data.go.kr 공공데이터포탈 -> csv.xml 제공된 파일 이용하기 위해 
+파이썬으로 읽는 법 알아야 함
+
+쉘 스크립트 - 유닉스, 리눅스에서 쓰임, 낫 윈도우
+ 인터프리터 - 한줄 한줄 치면 한줄 한줄 결과물
+
+공부하기시러용 ㅠㅠㅠㅠㅠ
+***************************
+
+# 한줄 주석
+'''
+문단주석
+'''
+
+my_float = '76.2'
+print(type(my_float))
+my_float = float(my_float)
+print(type(my_float))
+결과
+<class 'str'>
+<class 'float'>
+
+id(my_int)
+id는 메모리상의 주소
+x = 100
+y = x
+print(id(x), id(y))
+
+<class 'str'>
+<class 'float'>
+140728056712560 140728056712560
+
+
+블로그 주소 : blog.naver.com/vega2k
+
+print('섭씨 온도 입력!')
+a_tem = float(input())
+b_tem = (1.8* a_tem)+32
+print('섭씨온도 :', a_tem)
+print('화씨온도 :', b_tem)
+print('화씨온도 = {:.2f}'.format(b_tem))
+
+
+
+tem = 36
+print ('온도는 %d %.2f' %(tem, tem))
+print('온도는 {}'.format(tem))
+print(f'온도 {tem}')
+print("art : %5d, price per unit: %8.2f" % (123456, 59.058))
+
+온도는 36 36.00
+온도는 36
+온도 36
+art : 123456, price per unit:    59.06
+
+
+#padding
+print('product{0:10s}, price per unit{1:10.3f}'.format('Apple', 5.243))
+print('product{0:>10s}, price per unit{1:10.3f}'.format('Apple', 5.243))
+
+productApple     , price per unit     5.243
+product     Apple, price per unit     5.243
+
+
+
+print("i like 'apple' ")
+print('i like \'python\' ')
+
+i like 'apple' 
+i like 'python' 
+
+
+
+#문자열 인덱스
+greeting = 'Hello World!'
+print(greeting[1])
+print(greeting[11])
+
+#문자열 slicing
+print(greeting[2:5])
+print(greeting[:5])
+print(len(greeting))
+
+# split은 공백기준으로 뛰우고 타입을 리스트(배열)로 바꿔정
+# str -> list : packing
+# str의 여러가지 함수 사용하기
+word = 'good manufacture'
+print(word.upper())
+print(word)
+print(type(word.split(' ')))
+
+e
+!
+llo
+Hello
+12
+GOOD MANUFACTURE
+good manufacture
+<class 'list'>
+
+
+#리스트는 리드온리 변경불가
+#remove('값'), del colors[인덱스]
