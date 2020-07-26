@@ -1,0 +1,11 @@
+Html(hyper text markup language)
+Dom(document object model)
+- dom tree
+- traversing, traverse(순회한다)
+- manipulation (조정한다) : tree 변경
+
+숙제
+Ajax
+웹과의 차이
+Sql group by
+Pandas, matplotlib, seaborn
