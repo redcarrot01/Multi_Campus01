@@ -1,0 +1,5 @@
+2020-07-17 16:34:24,940 -DEBUG:logging_file_test.py:27 -Start of Program
+2020-07-17 16:34:24,940 -DEBUG:logging_file_test.py:28 -Hello 디버그모드
+2020-07-17 16:34:24,941 -INFO:logging_file_test.py:29 -Hello 인포모드
+2020-07-17 16:34:24,941 -ERROR:logging_file_test.py:31 -Hello error 모드
+2020-07-17 16:34:24,941 -DEBUG:logging_file_test.py:32 -End of Program
