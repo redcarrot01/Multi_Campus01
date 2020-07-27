@@ -1,0 +1,5 @@
+ajax 
+: 비동기,
+: 서버로부터 xml, json 형태의 데이터만 받아서
+  동적으로 html tag를 생성
+: 비동기 통신 담당하는 자바스크립트 객체 ->xhr(smlhttprequest)
