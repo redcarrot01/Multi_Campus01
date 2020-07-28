@@ -1,0 +1,8 @@
+sql과 프로그래밍language 를 연동하는 방법
+자바 - jdbc(java database connectivity), 
+        mybatis,프레임워크, - 잘알려진
+        jpa(java persistemce api) - 배민, 쿼리문만들지 않아
+
+python- pymysql, sqlalchemy, cx_oracle, django(orm 포함)
+
+cursor - 데이터 포인팅 마우스처럼
