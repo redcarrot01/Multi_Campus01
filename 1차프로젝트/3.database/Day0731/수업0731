@@ -1,0 +1,9 @@
+mongodb에서
+
+match(where)> group> match(having) >select //limit 순서 상관 없음
+
+어제한거 song.json, pymongo 개념
+ 
+오늘 zip.json
+
+주말 : 해야할거 타이타닉 나머지.., 생활코딩html ㅠㅠㅠㅠ
