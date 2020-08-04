@@ -1,0 +1,46 @@
+* spagetti code(x) ->역할 분리의 필요성
+"Seperation Of Responsibility"
+
+MVC pattern
+model - db와 연동
+ view - 화면
+ controller - 뷰와 모델을 연결
+
+MVT parrern
+model - db와 연동,
+view - template와 model을 연결(mvc 패턴의 controller와 비슷)
+template - 화면
+모델은 model.py파일에, 템플릿은 templates 디렉토리 하위의 *.html 파일에,  
+뷰는 views.py 파일에 작성하도록 처음부터 뼈대를 만들어 줍니다.  
+
+django - mtv
+
+: 모델 만들면 그자체로 db 생성됨
+: Post.objects.all() : select *from post order by id
+# 장고가 쿼리문 만들기 때문에 개발자는 직접 쓰지 않음
+
+
+- ORM 매핑 RULE
+
+model Class <=> Table
+Object <=> Row(record)
+variable(attribute) <=> column
+
+
+Post.objects.all() : select *from post order by id
+
+
+* 계정
+userid : django 
+pass : django
+
+* 실행
+python manage.py runserver
+http://127.0.0.1:8000/admin => 계정 들어가기
+
+ctrl+c 콘솔에서 끝내기
+
+projectname : mydjango -> mytest
+app name : blog ->blackboard
+source folder : django_src\mydjango -> django\mytest
+Model: Post -> Post
