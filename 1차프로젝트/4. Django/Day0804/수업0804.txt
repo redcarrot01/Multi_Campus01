@@ -1,1 +1,61 @@
-dd
+
+일정: 0831
+발표자료 템플릿 ppt 제공
+내용 : 프로젝트 소개, 동작 시연
+주제 : 자유
+
+
+django
+: 웹 사이트 개발
+: dynamic web application
+
+static web application 
+
+dynamic web application
+: (자바)servlet/jsp+jdbc(db) << <spring webmvc+ mybatis(db)>,<< spring boot+jpa
+    <<로 사용 편함,                                                                   쿼리 만들지 않음, 장고랑 비슷
+: (파이썬)django, flask   
+: php
+: (마이크로소프트) asp .net
+
+12페이지
+post_list : select * from post order by id(post 목록 )
+post_detail : select *from post where id =2 (있으면반환 없으면 404)
+
+14페이지
+
+
+44페이지
+메인페이지 만들기 views.post_list
+
+45페이지 -> blog 에 url.py 만들기
+
+view , template 공부함
+
+
+blog
+   template 
+      blog
+         post_list.html
+=> 장고 엔진은 템플릿 하위 폴더 파일들을 다 찾아 요청함
+     엔진은 하위만 인식?? 하는 느낌
+     그래서 구분을 하기 위해 template 밑에 blog 서브 폴더 만듦
+     
+
+csrf : cross site request forgery 사이트 간 요청 위조
+사용자는 자신의 의지와는 무관하게 공격자가 의도한 행위를 특정 웹사이트에 요청하게 하는 공격
+=> 이걸 방지 csrf token
+
+padding-left : 왼쪽으로 공백
+
+
+cdn(content delivery network) 서비스
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+
+
+bootstrap - 예쁜 ui / 테마 나 아이콘 등등
+https://www.w3schools.com/css/css_padding.asp - css 등 정보
