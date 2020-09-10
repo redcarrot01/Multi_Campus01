@@ -75,8 +75,8 @@
 - [vagrant@demo ~]$ git clone https://github.com/devops-book/ansible-playbook-sample.git
 #### 3 playbook을 실행해서 구축
 - [vagrant@demo ~]$ cd ansible-playbook-sample/
-[vagrant@demo ansible-playbook-sample]$ ansible-playbook -i development site.yml
--                                                          ~~~~~~~~~~~~~~ 인벤터리 파일을 지정
+- [vagrant@demo ansible-playbook-sample]$ ansible-playbook -i development site.yml
+-     인벤터리 파일을 지정(/etc/ansible/hosts파일 쓰지 않음)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv
 to see details
@@ -134,5 +134,94 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0    s
 hello, production ansible
 ~~~~~~~~~~~~~~~~~~~
 
+![7](https://user-images.githubusercontent.com/38436013/92679475-79dc1600-f363-11ea-97a1-3c06441467b4.JPG)
+#### 4 실행 대상 정의를 확인
+- 인벤터리 파일은 /etc/ansible/hosts 사용하지만 -i옵션 이용해서 지정 가능 
 
+#### 5 실행 내용 정의를 확인
 
+#### 6 템플릿 확인
+
+#### 7 템플릿에서 사용하는 변수값 확인
+
+#### 8 템플릿 내용 변경
+
+#### 9 dry-run 모드 실행
+
+#### 10 변경 사항을 호스트에 반영
+
+### vagrant 와 ansible 차이
+
+### 인프라 테스트 자동화 
+- 코드화 -> 자동화 
+#### Serverspec
+- 테스트 수행을 간단하고 쉽게 하기 위함
+- 인프라(서버) 설정 테스트 가능
+- 테스트 항목에 대한 목록을 정해진 포맷을 기반으로 기술이 가능
+- 테스트 결과를 리포트 형식으로 출력이 가능함
+#### Ansible을 이용해서 Serverspec을 설치
+- 0. rvm, ruby 설치
+- command curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -
+- command curl -sSL https://rvm.io/pkuczynski.asc | sudo gpg2 --import -
+- curl -L get.rvm.io | sudo bash -s stable
+- 생략 .. ruby rvm 설치
+
+- 1. Playbook 파일(site.yml)에서 serverspec롤을 추가
+- [vagrant@demo ansible-playbook-sample]$ vi site.yml
+~~~~~~~~~~~~~~~
+---
+- hosts: webservers
+  become: yes
+  connection: local
+  roles:
+    - common
+    - nginx
+    - serverspec
+#    - serverspec_sample
+#    - jenkins
+~~~~~~~~~~~~~~~
+- 2. serverspec 롤을 확인
+[vagrant@demo ansible-playbook-sample]$ cat ./roles/serverspec/tasks/main.y
+~~~~~~~~~
+# tasks file for serverspec
+- name: install ruby
+  yum: name=ruby state=installed
+
+- name: install serverspec
+  gem: name={{ item }} state=present user_install=no
+  with_items:
+   - rake
+   - serverspec
+
+~~~~~~~~~
+- 3. ansible-playbook으로 serverspec 설치
+- [vagrant@demo ansible-playbook-sample]$ ansible-playbook -i development site.yml --diff
+- 4. Serverspec 설정
+- [vagrant@demo ansible-playbook-sample]$ serverspec-init
+- 5. samplespec_rb  파일 확인
+- [vagrant@demo ansible-playbook-sample]$ cat ./spec/localhost/sample_spec.rb	
+
+### Ansible에 Serverspec을 이용한 테스트 롤을 추가
+#### 1 Playbook 파일(site.yml)에 Serverspec 테스트 롤을 추가
+- [vagrant@demo ansible-playbook-sample]$ vi site.yml
+~~~~~~~~~~~
+---
+- hosts: webservers
+  become: yes
+  connection: local
+  roles:
+    - common
+    - nginx
+    - serverspec                 
+    - serverspec_sample           ⇐ 주석(#) 해제 후 저장
+#    - jenkins
+~~~~~~~~~~~
+#### 2 serverspec_sample 롤 정의 파일을 확인
+- cat ./roles/serverspec_sample/tasks/main.yml
+#### 3 ansible-playbook으로 spec 파일(테스트 케이스 파일)을 배포 
+- [vagrant@demo ansible-playbook-sample]$ ansible-playbook -i development site.yml
+#### 4 spec 파일(테스트 케이스를 정의) 생성을 확인
+- [vagrant@demo ansible-playbook-sample]$ cat /tmp/serverspec_sample/spec/localhost/web_spec.rb
+#### 5 
+#### 6
+#### 7
