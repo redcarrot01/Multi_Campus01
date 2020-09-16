@@ -1,8 +1,55 @@
-# 복습
-## 컨테이너의 데이터를 영속적(persistent)인 데이터로 활용하는 방법
 
-### 방법1. 호스트 볼륨 공유
--v 옵션을 이용해서 호스트 볼륨을 공유
-- ⇒ 호스트의 디렉터리를 컨테이너의 디렉터리에 마운트
-- ⇒ 이미지에 원재 존재하는 디렉터리에 호스트의 볼륨을 공유하면 컨테이너의 디렉터리 자체가 덮어쓰게 됨
  
+# 트러블 슈팅과 이것저것 , 아직 정리 덜함 
+
+## 에러1 해결: sudo service docker restart : 서비스 재가동 해보기
+~~~~
+manifest for redccc9010/echo:latest not found.
+~~~~
+
+
+## 에러2 해결: docker-compose.yml를 vi해서 띄어쓰기나 오타 수정
+~~~~~
+RROR: The Compose file './docker-compose.yml' is invalid because:
+Invalid top-level property "manager". Valid top-level sections for this Compose file are: version, services, networks, volumes, secrets, configs, 
+and extensions starting with "x-".
+You might be seeing this error because you're using the wrong Compose file version. Either specify a supported version (e.g "2.2" or "3.3") and 
+place your service definitions under the `services` key, or omit the `version` key and place your service definitions at the root of the file to use version 1.
+For more on the Compose file format versions, see https://docs.docker.com/compose/compose-file/
+~~~~~
+
+
+## 에러3 해결 : 포트가 다른 곳으로 연결되어서 다른 사이트가 나올때
+- 1. 포트포워딩 살펴보기 : ip a해서 내 가상머신 ip 확인 후, 포트 포워딩 들어가서 ip설정 제대로 되었는가..
+- 2. docker-compose ps 하면 원격포트, 호스트 포트 나옴, 포트 포워딩 들어가서 포트 확인해보기
+- 3. 정 안되면 포트를 바꿔보자, 80포트를 누군가 쓰고 있을 수도 있다.. 
+
+
+## 에러 4 해결: vagrant destroy(삭제)하고 첨부터 다시..
+~~~~
+[root@swarm-worker2 ~]# docker swarm join \
+>     --token SWMTKN-1-3zchmqlksk4stsm3au9y9udtx3ibvop8h4hbqjv4adkpjfopq8-2t6bo175nvi4207u4ehiqn1tr \
+>     192.168.111.100:2377
+Error response from daemon: rpc error: code = 14 desc = grpc: the connection is unavailable
+~~~~
+
+
+## 질문 1 : yml 파일에서 포트를 80:80으로 설정했는데, vm에서 포트 포워딩시 호스트포트를 8888로 설정 
+- 내 pc(호스트) > 우분트 가상머신 > 컨테이너 구조
+- 80:80 = 가상머신 우분트 포트 : 컨테이너 포트
+- 8888 : 80 = 호스트 포트 : 특정 가상머신 우분트 or cetos 포트
+
+
+## docker-compose
+- 여러개의 컨테이너 관리하는 도구
+- 다른 기능도 있다 -> scale : 동일한 기능을 여러개 띄운다
+- 사용자가 많아지면 빠르게 반응하기 위해 컨테이너를 docker-run 해서 여러개 띄우는 것이 아니라 스케일 옵션을 주면 쉽게 띄울 수 있다
+
+
+## 까먹지 말것
+- ps : 실행되고 있는거 볼 수 있음
+
+- 컨테이너 배치 전략: 여러개의 노드에 컨테이너 올려서 묶어서 작업... docker-swarm
+-dind 도커 : 내피씨> 가상머신> 우분트> 도커> 또 도커
+
+
