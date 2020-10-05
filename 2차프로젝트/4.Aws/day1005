@@ -1,0 +1,81 @@
+## 1  교시
+
+- 사용자별로 묶고 권한주기
+
+- **ARN** : 아마존 리소스 네임
+  ~~~~
+  ec2-admin : 보기 , 편집, 삭제 가능
+  ec2-support: read-only
+  s3-support: read-only
+  
+  s3 : 스토리지 서비스 
+  버킷 : 파일 저장 공간
+  
+  - 로그아웃하고 user1 에 로그인하면 user1은 s3그룹 가정
+  이때 , 파일 생성 그런거 불가
+  ~~~~
+
+
+
+
+## chapter3
+
+- introduction to amazone s3
+
+- 버킷 만들고 파일 만든다 .. 접근 제한 기능
+
+- 버킷은 유니크한게 이름 생성해줘야
+
+  
+
+- 내 pc에서 아마존 서버에 접근하려니 안됨 -> 버킷 외부 접근 제한함으로 내부 파일으로 접근 못함 -> 따라서 읽을 수 있는 권한 주기 (외부 -> 내부 파일)
+
+- 권한 주는 법: 버킷 먼저 퍼블릭 -> 파일도 퍼블릭으로 설정
+
+- 그럼 그 링크 주소로 파일 볼 수 있음
+
+
+
+- creating a basic amazone s3 lifecycle policy
+
+  ~~~~ 
+  - 버킷 -> GLACIER -> GDA 순서로 이동
+  
+  ~~~~
+
+~~~
+<접근통제 3단계>
+식별(IDENTIFICATION)
+인증(AUTHENTICATION) 
+ - 지식 => 패스워드
+ - 소유 => OTP, 스마트폰, 인증서, 주민등록증
+ - 특징 => 성문, 지문, 정맥, 홍채 ... 필기체서명, ...
+ 
+인가(AUTHORIZATION) => 권한 부여 하는 것
+ - 화면 
+ - 기능
+ - 데이터
+~~~
+
+#### Configuring Amazon S3 Buckets to Host a Static Website with a Custom Domain(사용자 지정 도메인으로 정적 웹 사이트를 호스팅하도록 Amazon S3 버킷 구성)
+
+- 라우팅 해주는 서비스.... 라우터53 이용
+
+- 도메인을 먼저 만들고 라우터53 -> 버킷 생성 -> 생성된 버킷에다 호스팅 하기
+
+- index.html 하지 않아도 페이지가 뜬다 
+
+- 아마존 s3이용해서 웹 서비스 제공하나, 우리 주소를 쓰고 싶다
+
+- 그렇다면 라우팅53 연동이 필요하다 - 도메인 얻기
+
+  
+#### 포워딩과 리다이렉트 차이
+![캡처](https://user-images.githubusercontent.com/38436013/95056986-76ecff00-0730-11eb-86dc-40604363d5b6.PNG)
+
+  
+
+ 
+
+  
+
