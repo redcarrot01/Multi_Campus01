@@ -33,7 +33,7 @@ def lambda_handler(event, context):
     if response_db:
         return {
             'statusCode': 200,
-            'body': response_db
+            'body': json.dump(response_db)
         }
     else:
         print('uu')
